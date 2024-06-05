@@ -1,0 +1,14 @@
+{
+  "name": "project-processor",
+  "version": "1.0.0",
+  "description": "extract project codes into an output text file",
+  "main": "index.js",
+  "bin": {
+    "project-processor": "./bin/project-processor.js"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
