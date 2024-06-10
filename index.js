@@ -11,8 +11,15 @@ class ProjectProcessor {
       "package-lock.json",
       ".gitignore",
       ".git",
-      "logs",
       ".next",
+      ".npm",
+      "logs",
+      "pids",
+      "npm-debug.log",
+      "yarn-debug.log",
+      "yarn-error.log",
+      "lerna-debug.log",
+      ".pnpm-debug.log",
       path.basename(__filename),
     ];
   }
