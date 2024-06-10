@@ -22,7 +22,7 @@ class ProjectProcessor {
     files.forEach((file) => {
       const filePath = path.join(dir, file);
 
-      if (this.shouldIgnore(filePath, file)) {
+      if (this.shouldIgnore(filePath)) {
         return;
       }
 
@@ -35,12 +35,13 @@ class ProjectProcessor {
     return fileList;
   }
 
-  shouldIgnore(filePath, fileName) {
+  shouldIgnore(filePath) {
+    const fileName = path.basename(filePath);
     return (
       this.defaultIgnores.includes(fileName) ||
       this.additionalIgnores.includes(fileName) ||
-      this.defaultIgnores.includes(path.basename(filePath)) ||
-      this.additionalIgnores.includes(path.basename(filePath))
+      this.defaultIgnores.some((ignore) => filePath.includes(ignore)) ||
+      this.additionalIgnores.some((ignore) => filePath.includes(ignore))
     );
   }
 
