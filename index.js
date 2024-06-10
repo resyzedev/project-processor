@@ -12,6 +12,7 @@ class ProjectProcessor {
       ".gitignore",
       ".git",
       "logs",
+      ".next",
       path.basename(__filename),
     ];
   }
@@ -21,7 +22,7 @@ class ProjectProcessor {
     files.forEach((file) => {
       const filePath = path.join(dir, file);
 
-      if (this.shouldIgnore(file)) {
+      if (this.shouldIgnore(filePath)) {
         return;
       }
 
@@ -34,10 +35,11 @@ class ProjectProcessor {
     return fileList;
   }
 
-  shouldIgnore(file) {
+  shouldIgnore(filePath) {
+    const fileName = path.basename(filePath);
     return (
-      this.defaultIgnores.includes(file) ||
-      this.additionalIgnores.includes(file)
+      this.defaultIgnores.includes(fileName) ||
+      this.additionalIgnores.includes(fileName)
     );
   }
 
