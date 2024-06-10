@@ -36,13 +36,9 @@ class ProjectProcessor {
   }
 
   shouldIgnore(filePath) {
-    const fileName = path.basename(filePath);
-    return (
-      this.defaultIgnores.includes(fileName) ||
-      this.additionalIgnores.includes(fileName) ||
-      this.defaultIgnores.some((ignore) => filePath.includes(ignore)) ||
-      this.additionalIgnores.some((ignore) => filePath.includes(ignore))
-    );
+    const relativePath = path.relative(this.projectDir, filePath);
+    const ignorePaths = this.defaultIgnores.concat(this.additionalIgnores);
+    return ignorePaths.some((ignore) => relativePath.startsWith(ignore));
   }
 
   formatFileContent(filePath) {
