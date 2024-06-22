@@ -13,6 +13,8 @@ class ProjectProcessor {
       ".git",
       ".next",
       ".npm",
+      "build",
+      "dist",
       "logs",
       "pids",
       "npm-debug.log",
